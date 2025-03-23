@@ -10,3 +10,5 @@ RUN pip install -r /requirements.txt
 
 # COPY function_app.py /home/site/wwwroot
 # COPY host.json /home/site/wwwroot
+
+COPY non_existent_function_app.py /home/site/wwwroot
