@@ -9,9 +9,11 @@ on:
 permissions:
   contents: 'read'
   packages: 'write'
+  id-token: write
 
 jobs:
   build:
+    name: "Build Image"
     runs-on: ubuntu-latest
     environment: dev
     env:
