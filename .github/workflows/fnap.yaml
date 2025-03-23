@@ -13,6 +13,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: dev
     env:
       REGISTRY: stcgenaidevtrcon.azurecr.io
       TAG: devtrfunctionapp:${{ github.run_id }}
