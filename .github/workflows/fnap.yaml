@@ -12,6 +12,7 @@ permissions:
   id-token: write
 
 env:
+  AZURE_RESOURCE_GROUP_NAME: stc-genai-dev-tr-rg
   AZURE_FUNCTIONAPP_NAME: stcgenaidevtrfna
   REGISTRY: stcgenaidevtrcon.azurecr.io
   REPOSITORY_NAME: devtrfunctionapp
@@ -61,6 +62,12 @@ jobs:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      - name: 'Set app settings'
+        run: |
+          az functionapp config appsettings set \
+          --name ${{ env.AZURE_FUNCTIONAPP_NAME }} \
+          --resource-group ${{ env.AZURE_RESOURCE_GROUP_NAME }} \
+          --settings BUILD_ID=${{ github.run_id }}          
       - name: 'Run Azure Functions Container Action'
         uses: Azure/functions-container-action@v1
         id: functionapp
