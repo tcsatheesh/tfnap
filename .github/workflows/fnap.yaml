@@ -14,7 +14,8 @@ permissions:
 env:
   AZURE_FUNCTIONAPP_NAME: stcgenaidevtrfna
   REGISTRY: stcgenaidevtrcon.azurecr.io
-  TAG: devtrfunctionapp:${{ github.run_id }}
+  REPOSITORY_NAME: devtrfunctionapp
+  TAG: ${{ github.run_id }}
 
 jobs:
   build:
@@ -26,7 +27,7 @@ jobs:
       - name: "Build image"
         run: |
           cd azure_functions
-          docker build -t $REGISTRY/$TAG .
+          docker build -t ${{ env.REGISTRY }}/${{ env.REPOSITORY_NAME }}:${{ env.TAG }} .
       - name: Azure login
         uses: azure/login@v2
         with:
@@ -46,7 +47,7 @@ jobs:
       - name: "Push image to ACR"
         run: |
           cd azure_functions
-          docker push $REGISTRY/$TAG
+          docker push ${{ env.REGISTRY }}/${{ env.REPOSITORY_NAME }}:${{ env.TAG }}
 
   deploy:
     name: "Deploy to Azure Function App"
@@ -65,5 +66,5 @@ jobs:
         id: functionapp
         with:
           app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-          image: ${{ env.REGISTRY }}/${{ env.TAG }}
+          image: ${{ env.REGISTRY }}/${{ env.REPOSITORY_NAME }}:${{ env.TAG }}
 
