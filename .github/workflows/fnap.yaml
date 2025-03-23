@@ -15,7 +15,7 @@ env:
   AZURE_FUNCTIONAPP_NAME: stcgenaidevtrfna
   REGISTRY: stcgenaidevtrcon.azurecr.io
   REPOSITORY_NAME: devtrfunctionapp
-  TAG: latest
+  TAG: ${{ github.run_id }}
 
 jobs:
   build:
