@@ -4,7 +4,9 @@ name: Build and deploy a container to an Azure Function App
 #   AZURE_WEBAPP_NAME: MY_WEBAPP_NAME   # set this to your application's name
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 permissions:
   contents: 'read'
