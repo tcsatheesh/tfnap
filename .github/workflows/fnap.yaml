@@ -51,8 +51,8 @@ jobs:
   deploy:
     name: "Deploy to Azure Function App"
     runs-on: ubuntu-latest
-    needs: build
     environment: dev
+    needs: build
     steps:
       - name: Azure login
         uses: azure/login@v2
