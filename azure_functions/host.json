@@ -1,14 +1,10 @@
 {
   "version": "2.0",
   "logging": {
-    "console": {
-      "isEnabled": true,
-      "DisableColors": true
-    },
     "applicationInsights": {
       "samplingSettings": {
         "isEnabled": true,
-        "excludedTypes": "Request;Exception"
+        "excludedTypes": "Request"
       }
     }
   },
