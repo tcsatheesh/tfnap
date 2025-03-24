@@ -13,7 +13,7 @@ permissions:
 
 env:
   AZURE_RESOURCE_GROUP_NAME: stc-genai-dev-tr-rg
-  AZURE_FUNCTIONAPP_NAME: stcgenaidevtrfna2
+  AZURE_FUNCTIONAPP_NAME: stcgenaidevtrfna
   REGISTRY: stcgenaidevtrcon.azurecr.io
   REPOSITORY_NAME: devtrfunctionapp
   TAG: ${{ github.run_id }}
@@ -69,7 +69,7 @@ jobs:
           --settings BUILD_ID=${{ github.run_id }}          
       - name: 'Run Azure Functions Container Action'
         uses: Azure/functions-container-action@v1
-        id: functionapp
+        id: fa
         with:
           app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
           image: ${{ env.REGISTRY }}/${{ env.REPOSITORY_NAME }}:${{ env.TAG }}
