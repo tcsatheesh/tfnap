@@ -13,7 +13,7 @@ permissions:
 
 env:
   AZURE_RESOURCE_GROUP_NAME: stc-genai-dev-tr-rg
-  AZURE_FUNCTIONAPP_NAME: stcgenaidevtrfna
+  AZURE_FUNCTIONAPP_NAME: stcgenaidevtrfna2
   REGISTRY: stcgenaidevtrcon.azurecr.io
   REPOSITORY_NAME: devtrfunctionapp
   TAG: ${{ github.run_id }}
