@@ -49,7 +49,6 @@ jobs:
         run: |
           cd azure_functions
           docker push ${{ env.REGISTRY }}/${{ env.REPOSITORY_NAME }}:${{ env.TAG }}
-
   deploy:
     name: "Deploy to Azure Function App"
     runs-on: ubuntu-latest
